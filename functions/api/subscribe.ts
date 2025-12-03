@@ -71,7 +71,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       },
       body: JSON.stringify({ 
         email,
+        _replyto: email,
         _subject: "New TaskLock Early Access Signup",
+        _source: "tasklock-landing-page",
       }),
     });
 

@@ -69,9 +69,9 @@ function App() {
     e.preventDefault();
     if (!email) return;
 
-    // Get honeypot value
+    // Get honeypot value (Formspree expects "_gotcha")
     const form = e.currentTarget;
-    const honeypot = (form.elements.namedItem("website") as HTMLInputElement)
+    const honeypot = (form.elements.namedItem("_gotcha") as HTMLInputElement)
       ?.value;
 
     setIsSubmitting(true);
@@ -788,11 +788,11 @@ function App() {
 
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="signup__form">
-                  {/* Honeypot field - hidden from users, catches bots */}
+                  {/* Formspree honeypot field - hidden from users, catches bots */}
                   <input
                     type="text"
-                    name="website"
-                    style={{ position: "absolute", left: "-9999px" }}
+                    name="_gotcha"
+                    style={{ display: "none" }}
                     tabIndex={-1}
                     autoComplete="off"
                   />
