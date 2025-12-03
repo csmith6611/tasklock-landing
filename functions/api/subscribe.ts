@@ -58,13 +58,21 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
+    // Get origin from request for Formspree's spam detection
+    const origin = request.headers.get("Origin") || request.headers.get("Referer") || "https://tasklock.app";
+
     const formspreeResponse = await fetch(formspreeUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Origin: origin,
+        Referer: origin,
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ 
+        email,
+        _subject: "New TaskLock Early Access Signup",
+      }),
     });
 
     if (!formspreeResponse.ok) {
