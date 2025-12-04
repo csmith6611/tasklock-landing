@@ -6,4 +6,5 @@ pages_build_output_dir = "dist"
 # Environment variables (set these in Cloudflare Dashboard for production)
 # [vars]
 # FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID"
+# VITE_FORMSPREE_URL_ENDPOINT = "YOUR_FORM_ID"
 

@@ -1,12 +1,6 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  ReactNode,
-  CSSProperties,
-  FormEvent,
-} from "react";
+import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { FormSpreeForm } from "../components/FormspreeForm";
 
 // Intersection Observer hook for scroll animations
 function useInView(
@@ -40,7 +34,7 @@ interface AnimatedSectionProps {
   delay?: number;
 }
 
-function AnimatedSection({
+export function AnimatedSection({
   children,
   className = "",
   delay = 0,
@@ -61,43 +55,6 @@ function AnimatedSection({
 }
 
 function LandingPage() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!email) return;
-
-    // Get honeypot value (Formspree expects "_gotcha")
-    const form = e.currentTarget;
-    const honeypot = (form.elements.namedItem("_gotcha") as HTMLInputElement)
-      ?.value;
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, honeypot }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setSubmitted(true);
-      } else {
-        throw new Error(data.error || "Form submission failed");
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const features: string[] = [
     "Local-only enforcement",
     "Pi-hole integration",
@@ -771,80 +728,7 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* CTA / Signup */}
-      <section className="signup" id="signup">
-        <div className="container container--narrow">
-          <AnimatedSection>
-            <div className="signup__card">
-              <h2>Be the first to try it.</h2>
-              <div className="divider" style={{ margin: "1rem auto 2rem" }} />
-
-              <p className="signup__perks-intro">Early access gets:</p>
-              <ul className="signup__perks">
-                <li>Private beta invite</li>
-                <li>Access to the Pro features</li>
-                <li>Influence in shaping the future of the tool</li>
-                <li>Discounted lifetime pricing</li>
-              </ul>
-
-              {!submitted ? (
-                <form onSubmit={handleSubmit} className="signup__form">
-                  {/* Formspree honeypot field - hidden from users, catches bots */}
-                  <input
-                    type="text"
-                    name="_gotcha"
-                    style={{ display: "none" }}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="btn btn--primary"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <span className="signup__loading">Joining...</span>
-                    ) : (
-                      <>
-                        Join the Early Access List
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                        >
-                          <path
-                            d="M7 5l5 5-5 5"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </>
-                    )}
-                  </button>
-                </form>
-              ) : (
-                <div className="signup__success">
-                  <div className="signup__success-icon">✓</div>
-                  <p>You're on the list!</p>
-                  <span>
-                    We'll reach out soon with your early access invite.
-                  </span>
-                </div>
-              )}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <FormSpreeForm />
 
       {/* Footer */}
       <footer className="footer">
@@ -892,4 +776,3 @@ function LandingPage() {
 }
 
 export default LandingPage;
-
