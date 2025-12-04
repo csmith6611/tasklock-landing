@@ -47,7 +47,11 @@ export function FormSpreeForm({ plan }: FormSpreeFormProps) {
                   name="_subject"
                   value="New TaskLock Early Access Signup"
                 />
-                <input type="hidden" name="_source" value="tasklock-landing-page" />
+                <input
+                  type="hidden"
+                  name="_source"
+                  value="tasklock-landing-page"
+                />
                 {plan && <input type="hidden" name="plan" value={plan} />}
                 <input
                   type="email"
@@ -93,7 +97,7 @@ export function FormSpreeForm({ plan }: FormSpreeFormProps) {
               </div>
             )}
 
-            {errors && errors.length > 0 && (
+            {errors && Object.keys(errors).length > 0 && (
               <p className="signup__error">
                 An error has occurred in submission, please try again later.
               </p>
