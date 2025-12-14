@@ -289,6 +289,80 @@ function Demo() {
                 </div>
               </div>
             </AnimatedSection>
+
+            <AnimatedSection delay={0.3}>
+              <div className="demo-screenshot-card">
+                <div className="demo-screenshot-card__badge demo-screenshot-card__badge--tasklock">
+                  TaskLock Pro
+                </div>
+                <div className="demo-screenshot-card__image">
+                  <img
+                    src="/pro-domain-seeding.png"
+                    alt="TaskLock Pro domain seeding interface for pre-built blocklists"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="demo-screenshot-card__content">
+                  <h3>Domain Seeding (Pro Feature)</h3>
+                  <p>
+                    Quickly set up pre-built blocklists for common distractions.
+                    Choose from "Strict Mode," "Deep Work Mode," or "ADHD Mode"
+                    — or create your own custom lists.
+                  </p>
+                  <ul>
+                    <li>
+                      <span>📦</span> Pre-built blocklist packages
+                    </li>
+                    <li>
+                      <span>🎯</span> Focus mode presets
+                    </li>
+                    <li>
+                      <span>✏️</span> Custom domain lists
+                    </li>
+                    <li>
+                      <span>⚡</span> One-click setup
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.4}>
+              <div className="demo-screenshot-card">
+                <div className="demo-screenshot-card__badge demo-screenshot-card__badge--tasklock">
+                  TaskLock Pro
+                </div>
+                <div className="demo-screenshot-card__image">
+                  <img
+                    src="/bark config.png"
+                    alt="TaskLock Bark integration configuration for encrypted iOS push notifications"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="demo-screenshot-card__content">
+                  <h3>Bark Integration (Pro Feature)</h3>
+                  <p>
+                    Configure encrypted push notifications using the Bark iOS app
+                    model. Get zero-knowledge alerts about task status, blocking
+                    events, and access restoration — all without cloud storage.
+                  </p>
+                  <ul>
+                    <li>
+                      <span>🔐</span> End-to-end encryption
+                    </li>
+                    <li>
+                      <span>📱</span> iOS push notifications
+                    </li>
+                    <li>
+                      <span>🔔</span> Task reminders & alerts
+                    </li>
+                    <li>
+                      <span>🛡️</span> Zero-knowledge architecture
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
