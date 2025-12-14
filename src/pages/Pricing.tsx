@@ -116,9 +116,10 @@ const pricingTiers: PricingTier[] = [
     ],
     features: [
       "Everything in Pro",
+      "Pre-built blocklists",
+      "Turnkey setup",
       "Priority support",
       "Access to future premium features",
-      "Lifetime updates",
     ],
     badge: "Best Value",
   },
@@ -153,6 +154,8 @@ const comparisonData: ComparisonRow[] = [
   { feature: "Timezone support", free: true, pro: true, family: true },
   { feature: "Web admin UI", free: true, pro: true, family: true },
   { feature: "Advanced scheduling", free: false, pro: true, family: true },
+  { feature: "Pre-built blocklists", free: false, pro: false, family: true },
+  { feature: "Turnkey setup", free: false, pro: false, family: true },
   { feature: "Priority support", free: false, pro: false, family: true },
   { feature: "Future premium features", free: false, pro: false, family: true },
 ];

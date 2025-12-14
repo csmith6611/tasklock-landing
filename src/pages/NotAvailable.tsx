@@ -1,12 +1,9 @@
-import { useState, FormEvent } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { FormSpreeForm } from "../components/FormspreeForm";
 
 function NotAvailable() {
   const [searchParams] = useSearchParams();
   const plan = searchParams.get("plan") || "pro";
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const planNames: { [key: string]: string } = {
     free: "Free",
@@ -15,38 +12,6 @@ function NotAvailable() {
   };
 
   const planName = planNames[plan] || "Pro";
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!email) return;
-
-    const form = e.currentTarget;
-    const honeypot = (form.elements.namedItem("_gotcha") as HTMLInputElement)
-      ?.value;
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, honeypot, plan }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setSubmitted(true);
-      } else {
-        throw new Error(data.error || "Form submission failed");
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="app">
@@ -141,78 +106,7 @@ function NotAvailable() {
               access and be the first to know when it launches.
             </p>
 
-            {/* Signup Card */}
-            <div className="not-available__card animate-in delay-4">
-              {!submitted ? (
-                <>
-                  <h2>Join the Alpha</h2>
-                  <p className="not-available__perks-intro">
-                    Early access members get:
-                  </p>
-                  <ul className="not-available__perks">
-                    <li>Priority access to the private alpha</li>
-                    <li>All Pro features during testing</li>
-                    <li>Direct line to shape the product</li>
-                    <li>Discounted lifetime pricing</li>
-                  </ul>
-
-                  <form onSubmit={handleSubmit} className="not-available__form">
-                    <input
-                      type="text"
-                      name="_gotcha"
-                      style={{ display: "none" }}
-                      tabIndex={-1}
-                      autoComplete="off"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                    <button
-                      type="submit"
-                      className="btn btn--primary"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <span className="not-available__loading">
-                          Joining...
-                        </span>
-                      ) : (
-                        <>
-                          Sign Up for Alpha
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                          >
-                            <path
-                              d="M7 5l5 5-5 5"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </>
-                      )}
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <div className="not-available__success">
-                  <div className="not-available__success-icon">✓</div>
-                  <h2>You're on the list!</h2>
-                  <p>
-                    We'll reach out soon with your early access invite for the{" "}
-                    {planName} plan.
-                  </p>
-                </div>
-              )}
-            </div>
+            <FormSpreeForm plan={plan} />
 
             {/* Timeline */}
             <div className="not-available__timeline animate-in delay-5">
