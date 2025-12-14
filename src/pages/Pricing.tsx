@@ -258,6 +258,7 @@ function Pricing() {
             <Link to="/pricing" className="nav__link--active">
               Pricing
             </Link>
+            <Link to="/demo">Demo</Link>
             <Link to="/#signup" className="btn btn--primary btn--small">
               Early Access
             </Link>
@@ -686,6 +687,10 @@ function Pricing() {
               <span>Private.</span>
               <span>Effective.</span>
             </p>
+            <div className="footer__links">
+              <Link to="/pricing">Pricing</Link>
+              <Link to="/demo">Demo</Link>
+            </div>
             <div className="footer__logo">
               <svg className="footer__icon" viewBox="0 0 100 100" fill="none">
                 <rect

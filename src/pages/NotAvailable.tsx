@@ -79,6 +79,7 @@ function NotAvailable() {
             <Link to="/#how-it-works">How It Works</Link>
             <Link to="/#features">Features</Link>
             <Link to="/pricing">Pricing</Link>
+            <Link to="/demo">Demo</Link>
             <Link to="/#signup" className="btn btn--primary btn--small">
               Early Access
             </Link>

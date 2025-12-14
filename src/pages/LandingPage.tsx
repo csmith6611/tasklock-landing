@@ -142,6 +142,7 @@ function LandingPage() {
             <a href="#how-it-works">How It Works</a>
             <a href="#features">Features</a>
             <Link to="/pricing">Pricing</Link>
+            <Link to="/demo">Demo</Link>
             <a href="#signup" className="btn btn--primary btn--small">
               Early Access
             </a>
@@ -771,6 +772,104 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* Demo Preview */}
+      <section className="demo-preview" id="demo">
+        <div className="container">
+          <AnimatedSection>
+            <h2>See It In Action</h2>
+            <p className="demo-preview__subtitle">
+              Watch TaskLock enforce accountability in real-time
+            </p>
+            <div className="divider" />
+          </AnimatedSection>
+
+          <div className="demo-preview__grid">
+            <AnimatedSection delay={0.1}>
+              <div className="demo-preview__card">
+                <div className="demo-preview__image">
+                  <img
+                    src="/recurring task page.png"
+                    alt="TaskLock recurring tasks admin"
+                    loading="lazy"
+                  />
+                  <div className="demo-preview__overlay">
+                    <Link to="/demo" className="btn btn--primary">
+                      Watch Full Demo
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M7 5l5 5-5 5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+                <h3>Recurring Tasks Admin</h3>
+                <p>Set up automated task templates with custom schedules</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2}>
+              <div className="demo-preview__card">
+                <div className="demo-preview__image">
+                  <img
+                    src="/landing page.png"
+                    alt="Vikunja task manager"
+                    loading="lazy"
+                  />
+                  <div className="demo-preview__overlay">
+                    <Link to="/demo" className="btn btn--primary">
+                      Watch Full Demo
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M7 5l5 5-5 5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+                <h3>Vikunja Integration</h3>
+                <p>Your tasks sync seamlessly with Vikunja task manager</p>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection delay={0.3}>
+            <div className="demo-preview__cta">
+              <Link to="/demo" className="btn btn--secondary">
+                View Videos & Screenshots
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M7 5l5 5-5 5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* CTA / Signup */}
       <section className="signup" id="signup">
         <div className="container container--narrow">
@@ -863,6 +962,7 @@ function LandingPage() {
             </p>
             <div className="footer__links">
               <Link to="/pricing">Pricing</Link>
+              <Link to="/demo">Demo</Link>
             </div>
             <div className="footer__logo">
               <svg className="footer__icon" viewBox="0 0 100 100" fill="none">
