@@ -54,8 +54,6 @@ function AnimatedSection({
 }
 
 function Demo() {
-  const [activeVideo, setActiveVideo] = useState<number | null>(null);
-
   return (
     <div className="app">
       <div className="grid-pattern" />
